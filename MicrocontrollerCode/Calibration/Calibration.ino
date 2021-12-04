@@ -46,8 +46,8 @@ int buffersize = 1000;     //Amount of readings used to average, make it higher 
 int accelTolerance = 7;     //Acelerometer error allowed, make it lower to get more precision, but sketch may not converge  (default:8)
 int gyroTolerance = 1;     //gyro error allowed, make it lower to get more precision, but sketch may not converge  (default:1)
 
-//MPU6050 AccelGyro(0x68); // <-- for AD0 (pin that specifies I2C address. default is 0x68) low, use this and comment line below
-MPU6050 AccelGyro(0x69); //<-- for AD0 high, use this and comment line below
+MPU6050 AccelGyro(0x68); // <-- for AD0 (pin that specifies I2C address. default is 0x68) low, use this and comment line below
+//MPU6050 AccelGyro(0x69); //<-- for AD0 high, use this and comment line below
 
 int16_t ax, ay, az,gx, gy, gz; // raw values of accelerometer and gyroscope in x,y,z
 int meanAx,meanAy,meanAz,meanGx,meanGy,meanGz,state = 0;

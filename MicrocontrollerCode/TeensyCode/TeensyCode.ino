@@ -72,7 +72,7 @@ uint8_t devStatus2;
 uint16_t packetSize2;    
 uint16_t fifoCount2;     
 uint8_t fifoBuffer2[64]; 
-int imu2CalibrationOffset[6] = {-3707, -341, 1621, -474, 41, -39};
+int imu2CalibrationOffset[6] = {-3424, -1040, 1670, -36, 81, 48}; // {-3707, -341, 1621, -474, 41, -39};
 volatile bool mpuInterrupt2 = false;     // indicates whether MPU interrupt pin has gone high
 
 
@@ -292,7 +292,7 @@ void imuRead(uint8_t addr, char outputType) {
           encoderAngle = encoderValue / countPerRev * fullRot; //Processed encoder output data in angular units (degrees)
 
           // Gather all raw data that you wish to transmit to PC
-          rawDataString = String(millis()) + "," + String(encoderAngle) + "," + String(q0b) + "," + String(q1b) + "," + String(q2b) + "," + String(q3b) + "," +  String(q0a) + "," + String(q1a) + "," + String(q2a) + "," + String(q3a) + "," +String((gx2) / (gyroSensitivity))+ "," + String((gy2) / (gyroSensitivity)) + "," + String((gz2) / (gyroSensitivity))+ "," + String((ax2) / (accelSensitivity)) + "," + String(ay2/accelSensitivity) + "," + String((az2)/(accelSensitivity)) + "," + String((gx1) / (gyroSensitivity))+ "," + String((gy1) / (gyroSensitivity)) + "," + String((gz1) / (gyroSensitivity))+ "," + String((ax1) / (accelSensitivity)) + "," + String(ay1/accelSensitivity) + "," + String((az1)/(accelSensitivity));
+          rawDataString = String(millis()) + "," + String(-encoderAngle) + "," + String(q0b) + "," + String(q1b) + "," + String(q2b) + "," + String(q3b) + "," +  String(q0a) + "," + String(q1a) + "," + String(q2a) + "," + String(q3a) + "," +String((gx2) / (gyroSensitivity))+ "," + String((gy2) / (gyroSensitivity)) + "," + String((gz2) / (gyroSensitivity))+ "," + String((ax2) / (accelSensitivity)) + "," + String(ay2/accelSensitivity) + "," + String((az2)/(accelSensitivity)) + "," + String((gx1) / (gyroSensitivity))+ "," + String((gy1) / (gyroSensitivity)) + "," + String((gz1) / (gyroSensitivity))+ "," + String((ax1) / (accelSensitivity)) + "," + String(ay1/accelSensitivity) + "," + String((az1)/(accelSensitivity));
           Serial.println(rawDataString);
           sampleNumber++;
           delay(2);

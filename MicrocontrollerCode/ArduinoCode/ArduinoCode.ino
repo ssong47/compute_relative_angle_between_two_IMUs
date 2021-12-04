@@ -34,9 +34,9 @@ const int stepPin = 10;  //OUTPUT Arduino pin # controlling the pulsing of stepp
 const int dirPin = 9; //OUTPUT Arduino pin # controlling rotation direction of stepper motor. HIGH - clockwise, LOW - counter-clockwise
 const int enPinOut = 11;  //OUTPUT Arduino pin # enable/disabling the stepper motor. HIGH - off, LOW - on
 const int enPinIn = 6; //INPUT Arduino pin # receiving on/off signal from Teensy 3.6
-int enable; // enable - logic of enPinIn
+int enableStatus; // enable - logic of enPinIn
 
-int stepperInterval = 80; //Determines the speed. Specifically, it is the interval between steps in micro-seconds. See note below.
+int stepperInterval = 600; //Determines the speed. Specifically, it is the interval between steps in micro-seconds. See note below.
 // sixteenth micro step is used for all speed settings
 // (protocol speed): stepperInterval: mean speed (deg/s)
 // (fast): 80: 200 
@@ -60,11 +60,11 @@ void setup() {
 }
 
 void loop() {
-  enable = digitalRead(enPinIn); // Read signal from Teensy 3.6
-  
+  enableStatus = digitalRead(enPinIn); // Read signal from Teensy 3.6
+  Serial.println(enableStatus);
 
   // If Teensy 3.6 sends a HIGH signal to enPinIn,
-  if (enable == HIGH) {
+  if (enableStatus == HIGH) {
     digitalWrite(enPinOut, LOW); // Rotate the stepper motor by one step
     digitalWrite(dirPin, HIGH); // at the given direction
 
