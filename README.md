@@ -1,5 +1,6 @@
 # Sensor-fusion algorithms to compute 3D orientation of two 6-axis IMUs
 This github repository contains code to compute relative joint angles of two 6-axis IMUs (MPU6050) using various sensor fusion algorithms.
+![song1-3203346-large](https://github.com/user-attachments/assets/a2e656bc-1451-4b74-90f5-e151c0c9e783)
 
 
 This repository contains data processing code from the paper below:
